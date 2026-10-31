@@ -1,0 +1,52 @@
+# Local environment variables and secret settings
+.env
+.env.*
+*.env
+.dev.vars
+.dev.vars.*
+config.local.php
+config.secret.php
+config.secrets.php
+secrets.php
+secrets.json
+secrets.yaml
+secrets.yml
+*.secret
+*.secrets
+
+# Package manager credentials
+auth.json
+.npmrc
+.pypirc
+.netrc
+_netrc
+
+# Private keys and credential bundles
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+.htpasswd
+credentials.json
+service-account*.json
+*-service-account.json
+.aws/
+.ssh/
+.config/gh/
+
+# Local databases, logs, and state can contain private data
+*.sqlite
+*.sqlite3
+*.log
+*.tfstate
+*.tfstate.*
+storage/*.key
+storage/logs/
+
+# Local dependencies
+vendor/
+node_modules/
