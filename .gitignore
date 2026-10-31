@@ -50,3 +50,6 @@ storage/logs/
 # Local dependencies
 vendor/
 node_modules/
+
+# Local Vercel project settings and pulled configuration
+.vercel/
