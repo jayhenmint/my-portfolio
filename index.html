@@ -6,6 +6,15 @@
   <meta name="description" content="Senior PHP developer with 10 years of experience building reliable web applications, APIs, and backend systems.">
   <meta name="theme-color" content="#101512">
   <title>Venus Balderas — Senior PHP Developer</title>
+  <script>
+    // Apply the saved appearance before the page paints.
+    (function () {
+      var theme = 'dark';
+      try { if (localStorage.getItem('portfolio-theme') === 'light') theme = 'light'; } catch (_) {}
+      document.documentElement.dataset.theme = theme;
+      document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#fafbf8' : '#101512';
+    })();
+  </script>
   <style>
     :root{--bg:#101512;--panel:#171e19;--ink:#edf2e9;--muted:#a3afa5;--line:#303b32;--accent:#c5f582;--mono:Consolas,'Courier New',monospace}
     *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:32px}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button,a,summary{-webkit-tap-highlight-color:transparent}a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:6px}::selection{background:var(--accent);color:var(--bg)}.wrap{width:min(1160px,calc(100% - 80px));margin:auto}.skip{position:fixed;top:-80px;left:20px;z-index:10;background:var(--accent);color:var(--bg);padding:14px}.skip:focus{top:12px}
@@ -20,6 +29,17 @@
     @media(max-width:1000px){.wrap{width:calc(100% - 48px)}.hero{gap:30px}h1{font-size:54px}.code{font-size:10px;padding:22px 14px}.metric strong{font-size:25px}.metric+.metric{padding-left:20px}.project-body{padding:18px}.project-art{padding:18px}.about{gap:45px}.contact{padding:35px}}
     @media(max-width:720px){header{height:80px}nav{gap:18px}.nav-contact{display:none}.hero{grid-template-columns:1fr;padding:52px 0 45px;gap:42px}h1{font-size:clamp(44px,9vw,64px);letter-spacing:-2.6px}.intro{max-width:100%}.editor{max-width:500px;width:calc(100% - 12px);transform:none}.code{font-size:12px;padding:22px 16px}.metrics{gap:15px;padding:22px 0}.metric{display:block}.metric strong{display:block;margin-bottom:6px;font-size:26px}.metric span{font-size:8px;letter-spacing:.5px}.metric+.metric{padding-left:15px}section{padding:52px 0}.section-top{align-items:start}.section-note{max-width:150px;font-size:9px}.projects{grid-template-columns:1fr;gap:22px}.project-art{height:210px;padding:30px}.project-body{padding:24px}.mini-dashboard,.api-visual,.queue{max-width:340px}.about{grid-template-columns:1fr;gap:25px}.about h2{max-width:100%}.contact{padding:30px;flex-direction:column;align-items:start;margin-bottom:40px}.contact h2{font-size:33px}footer{font-size:9px}}
     @media(max-width:380px){.wrap{width:calc(100% - 32px)}.wordmark{font-size:15px}nav{gap:12px;font-size:11px}.code{font-size:10px}.actions{gap:17px}.button{gap:20px}.section-top{flex-direction:column;gap:12px}.section-note{text-align:left;max-width:none}.skills{grid-template-columns:1fr}.contact{padding:24px}}
+    :root{color-scheme:dark}
+    :root[data-theme="light"]{color-scheme:light;--bg:#fafbf8;--panel:#fff;--ink:#18231b;--muted:#526055;--line:#ccd5c8;--accent:#346519}
+    .theme-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:12px Arial,Helvetica,sans-serif;cursor:pointer;white-space:nowrap}
+    .theme-toggle[hidden]{display:none}.theme-toggle:hover{border-color:var(--accent)}.theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.theme-icon{font-size:17px;line-height:1}
+    /* Keep code and project previews readable in either appearance. */
+    .editor,.project-art{--accent:#c5f582;--line:#303b32;--muted:#a3afa5;color:#edf2e9;color-scheme:dark}
+    .project-art{background-color:#171e19}
+    :root[data-theme="light"] .contact{background:#eaf1e3;border-color:#bdcdb2}
+    :root[data-theme="light"] .tags span{border-color:var(--line);color:#43563b}
+    :root[data-theme="light"] .button:hover{background:#284f13;color:#fff}
+    @media(max-width:720px){header{height:auto;flex-wrap:wrap;gap:18px;padding:20px 0}nav{width:100%;gap:22px}.theme-toggle{margin-left:auto}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
   </style>
 </head>
@@ -28,7 +48,7 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="wrap">
     <a class="wordmark" href="#top" aria-label="Your Name home"><span class="logo" aria-hidden="true">&lt;/&gt;</span> Venus  Balderas<span style="color:var(--accent)">.</span></a>
-    <nav aria-label="Main navigation"><a href="#work">Projects</a><a href="#about">About</a><a class="nav-contact" href="#contact">Let’s talk <span class="arrow" aria-hidden="true">↗</span></a></nav>
+    <nav aria-label="Main navigation"><a href="#work">Projects</a><a href="#about">About</a><a class="nav-contact" href="#contact">Let’s talk <span class="arrow" aria-hidden="true">↗</span></a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false" hidden><span class="theme-icon" aria-hidden="true">☀</span><span id="theme-label">Light mode</span></button></nav>
   </header>
   <main id="main" class="wrap">
     <div class="hero">
@@ -95,6 +115,29 @@
     </section>
     <footer><span>© <span id="year">2026</span> Your Name. Built with purpose.</span><a href="#top">Back to top <span class="arrow" aria-hidden="true">↑</span></a></footer>
   </main>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById('theme-toggle');
+      var label = document.getElementById('theme-label');
+      var icon = toggle.querySelector('.theme-icon');
+      function updateToggle() {
+        var light = root.dataset.theme === 'light';
+        label.textContent = light ? 'Dark mode' : 'Light mode';
+        icon.textContent = light ? '☾' : '☀';
+        toggle.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+        toggle.setAttribute('aria-pressed', String(light));
+        document.querySelector('meta[name="theme-color"]').content = light ? '#fafbf8' : '#101512';
+      }
+      updateToggle();
+      toggle.hidden = false;
+      toggle.addEventListener('click', function () {
+        root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+        try { localStorage.setItem('portfolio-theme', root.dataset.theme); } catch (_) {}
+        updateToggle();
+      });
+    })();
+  </script>
 </body>
 </html>
